@@ -1,0 +1,22 @@
+# default 값 설정하기 - 여기 부분은 전부 설정 안해줘도 상관없음
+global:
+  scrape_interval: 15s # scrap target의 기본 interval을 15초로 변경 / default = 1m
+  scrape_timeout: 15s # scrap request 가 timeout 나는 길이 / default = 10s
+  evaluation_interval: 2m # rule 을 얼마나 빈번하게 검증하는지 / default = 1m
+
+# 매트릭을 수집할 엔드포인드로 여기선 Prometheus 서버 자신을 가리킨다.
+scrape_configs:
+  # 이 설정에서 수집한 타임시리즈에 `job=<job_name>`으로 잡의 이름을 설정한다.
+  # metrics_path의 기본 경로는 '/metrics'이고 scheme의 기본값은 `http`다
+  - job_name: 'prometeus' # job_name 은 모든 scrap 내에서 고유해야함
+    # 실제 scrap 하는 타겟에 관한 설정
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'windows' # job_name 은 모든 scrap 내에서 고유해야함
+    # 실제 scrap 하는 타겟에 관한 설정
+    static_configs:
+      - targets: ['172.28.80.1:9182']
+  - job_name: 'cAdvisor' # job_name 은 모든 scrap 내에서 고유해야함
+    # 실제 scrap 하는 타겟에 관한 설정
+    static_configs:
+      - targets: ['172.28.80.1:28080']
