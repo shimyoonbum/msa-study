@@ -1,0 +1,4 @@
+activemq:
+  broker:
+    url: tcp://activemq-server:61616
+    topic: item-hist

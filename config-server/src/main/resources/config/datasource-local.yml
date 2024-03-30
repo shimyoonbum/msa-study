@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3316/msa
+    username: root
+    password: '{cipher}41672d3ace7d67dbabc10833e8dc43684f89f590f5d66e2bdb5dde78a21ea929'
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
